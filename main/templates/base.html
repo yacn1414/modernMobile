@@ -1,0 +1,492 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+     <!-- CSS 
+    ========================= -->
+     <!--bootstrap min css--> 
+    <link rel="stylesheet" href="{% static '/assets/css/bootstrap.min.css' %}">
+    <!--owl carousel min css-->
+    <link rel="stylesheet" href="{% static '/assets/css/owl.carousel.min.css' %}">
+    <!--slick min css-->
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <!--magnific popup min css-->
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <!--font awesome css-->
+    <link rel="stylesheet" href="{% static 'assets/css/font.awesome.css' %}">
+    <!--font ionicons css-->
+    <link rel="stylesheet" href="{% static 'assets/css/ionicons.min.css' %}">
+    <!--animate css-->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <!--jquery ui min css-->
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}">
+    <!--slinky menu css-->
+    <link rel="stylesheet" href="{% static 'assets/css/slinky.menu.css' %}">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+    
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    
+    <!--modernizr min js here-->
+    <script src="{% static 'assets/js/vendor/modernizr-3.7.1.min.js' %}"></script>
+
+</head>
+
+<body>
+    
+    {% if messages %}
+        
+    
+        
+    <div class="newletter-popup">
+        <div id="boxes" class="newletter-container">
+            <div id="dialog" class="window">
+                <div id="popup2">
+                    <span class="b-close"><span>بستن</span></span>
+                </div>
+                <div class="box">
+                    <div class="newletter-title">
+                        <h2>پیام سیستمی</h2>
+                    </div>
+                    <div class="box-content newleter-content">
+                        
+                        {% for message in messages %}
+                            
+                            <div class="alert alert-success" role="alert">
+                                {{message}}
+                              </div>
+                        {% endfor %}
+                            
+                    </div>
+                    <!-- /.box-content -->
+                </div>
+            </div>
+
+        </div>
+        <!-- /.box -->
+    </div>
+    {% endif %}
+    <!-- Main Wrapper Start -->
+    <!--offcanvas menu area start-->
+    <div class="off_canvars_overlay">
+                
+    </div>
+    <div class="offcanvas_menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="canvas_open">
+                        <a href="javascript:void(0)"><i class="icon-menu"></i></a>
+                    </div>
+                    <div class="offcanvas_menu_wrapper">
+                        <div class="canvas_close">
+                            <a href="javascript:void(0)"><i class="icon-x"></i></a>  
+                        </div>
+                        <div class="welcome_text">
+                            <p>به آرسس تکنو خوش آمدید!</p>
+                        </div>
+                         <div class="top_right">
+                            <ul>
+                                
+                                <li><a href="/likes"><i class="icon-heart"></i> لیست علاقه مندیها ({{ino}})</a></li>
+                                <li class="top_links"><a href="/login">حساب</a>
+                                </li>
+
+                                
+                            </ul>
+                        </div>
+                        <div class="search-container">
+                            <form action="/search" method="post">
+                                {% csrf_token %}
+                                <div class="search_box">
+                                    <input name="search" placeholder="کل فروشگاه را اینجا جستجو کنید ..." type="text">
+                                    <button type="submit"><i class="icon-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="customer_support">
+                            <div class="support_img_icon">
+                                <img src="{% static 'assets/img/icon/icon_phone.png' %}" alt="آرسس تکنو">
+                            </div>
+                            <div class="customer_support_text">
+                                <p>
+                                    <span>پشتیبان مشتری</span>
+                                    <a href="tel:09301741497">09301741497</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="header_cart_wishlist">   
+                            <div class="header_wishlist_btn">
+                                <a href="/likes"><i class="icon-heart"></i></a>
+                                 <span class="wishlist_quantity">{{ino}}</span>
+                                 
+                            </div>            
+                            <div class="mini_cart_wrapper text-right">
+                                <a href="/sabad"><span class="icon-shopping-cart"></span></a>
+                                <span class="cart_quantity">{{sabad}}</span>
+                                <!--mini cart-->
+
+                                
+                                <!--mini cart end-->
+                            </div>
+                        </div> 
+                        <div id="menu" class="text-left ">
+                            <ul class="offcanvas_main_menu">
+                  
+                                    <li><a class="active" href="/">صفحه اصلی<i class="fa"></i></a>
+                                    </li>
+                                    <li><a href="#">{{name}}</a></li>
+                                    <li><a href="/about">درباره ما </a> </li>
+                                    <li><a href="/login">ورود</a> </li>
+                                    <li><a href="/signup">ثبت نام</a> </li>
+                                    <li><a href="/contact"> تماس با ما</a></li>
+                       
+                            </ul>
+                        </div>
+
+                        <div class="offcanvas_footer">
+                            <span><a href="#"><i class="fa fa-envelope-o"></i> yacn1214@gmail.com</a></span>
+                            <ul>
+                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--offcanvas menu area end-->
+    
+    <!--header area start-->
+    <header class="header_area header_two">
+        <!--header top start-->
+        <div class="header_top">
+            <div class="container">
+                <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-9">
+                            <div class="welcome_text">
+                                <p>به فروشگاه ما خوش آمدید!</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <div class="top_right text-right">
+                                <ul>
+                                    
+                                    <li class="top_links"><a href="#">تنظیم <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                        <ul class="dropdown_links">
+                                            <li><a href="#">{{name}}</a></li>
+                                            <li><a href="/my-account">حساب من </a> </li>
+                                            <li><a href="/sabad">سبد خرید </a></li>
+                                            <li><a href="/likes">لیست دلخواه </a> </li>
+                                        </ul>
+                                    </li>
+                                   
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!--header top start-->
+        <!--header middel start-->
+        <div class="header_middle sticky-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-6">
+                        <div class="logo">
+                            <a href="../"><img src="{% static 'assets/img/logo/logo.png' %}" alt="آرسس تکنو"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-6 header_position">
+                        <div class="middel_right" >
+                            <div class="main_menu menu_two">
+                                <nav>
+                                    <ul>
+                                        <li><a class="active" href="/">صفحه اصلی<i class="fa"></i></a>
+                                        </li>
+ 
+                                        <li><a href="/about">درباره ما </a> </li>
+                                        <li><a href="/contact"> تماس با ما</a></li>
+                                        {% if id_use %}
+                                        <li><a href="">{{name}}</a></li>  
+                                        {% else %}
+                                        <li><a href="/login">ورود</a> </li>
+                                        <li><a href="/signup">ثبت نام</a> </li>
+                                        {% endif %}
+                                        
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="customer_support">
+                                <div class="support_img_icon">
+                                    <img src="{% static 'assets/img/icon/icon_phone.png' %}" alt="آرسس تکنو">
+                                </div>
+                                <div class="customer_support_text">
+                                    <p>
+                                        <span>پشتیبان مشتری</span>
+                                        <a href="tel:09301741497">09301741497</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header middel end-->
+        <!--header bottom satrt-->
+        <div class="header_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3">
+                        <div class="categories_menu">
+                            <div class="categories_title">
+                                <h2 class="categori_toggle">همه دسته ها </h2>
+                            </div>
+                            <div class="categories_menu_toggle">
+                                <ul>                                   
+                                    {% for catego in category %}
+                                    <li><a href="c/{{catego}}">{{catego}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="search-container">
+                            <form method="post" action="/search">
+                                {% csrf_token %}
+                                <div class="search_box">
+                                    <input name="search_cahr" placeholder="کل فروشگاه را اینجا جستجو کنید ..." type="text">
+                                    <button type="submit"><i class="icon-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div> 
+                    <div class="col-lg-3">
+                        <div class="header_cart_wishlist">   
+                            <div class="header_wishlist_btn">
+                                <a href="#"><i class="icon-heart"></i></a>
+                                 <span class="wishlist_quantity">{{ino}}</span>
+                            </div>            
+                            <div class="mini_cart_wrapper text-right">
+                                <a href="javascript:void(0)"><span class="icon-shopping-cart"></span></a>
+                                <span class="cart_quantity">{{sabad}}</span>
+                                <!--mini cart-->
+                                <div class="mini_cart">
+
+
+                                    {% for sa in saba %}
+                                    {% if sa.id_user == id_use %}
+                                    {% for pro in allp %}
+                                        
+                                    {% if sa.id_pro == pro.id %}
+                                      
+                                    <div class="cart_item">
+                                        <div class="cart_img">
+                                            <a href="/pro/{{pro.id}}"><img src="../ProductImage/{{pro.picture}}" alt="آرسس تکنو"></a>
+                                        </div>
+                                        <div class="cart_info">
+                                           <a href="/pro/{{pro.id}}">{{pro.name}}</a>
+                                            {% load custom_tags %}
+                                            <span class="quantity">تعداد: {{sa.T}}</span>
+                                            <span class="price_old">{% takhfif pro.price pro.price_offer id_use pro.id%} تومان</span>
+
+                                        </div>
+
+                                        <div class="cart_remove">
+                                        <form action="/delete/{{pro.id}}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" style="border: none;background-color: white;" ><i class="ion-android-close"></i></button>
+                                        </form>
+
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% endfor %}
+  
+
+                                    <div class="mini_cart_footer">
+                                        <div class="cart_button">
+                                            <a href="/sabad">نمایش سبد</a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!--mini cart end-->
+                            </div>
+                        </div>     
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <!--header bottom end-->
+
+    </header>
+
+
+{% block content %}
+    
+{% endblock content %}
+    
+        <!--footer area start-->
+        <footer class="footer_widgets">
+            <div class="footer_top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-5">
+                            <div class="widgets_container contact_us">
+                                <div class="footer_logo">
+                                    <a href="../"><img src="assets/img/logo/logo.png" alt="آرسس تکنو"></a>
+                                </div>
+                                <div class="footer_contact">
+                                    <p>فروشگاه آرسس تکنو پیشگام در عرضه لوازم خانگی و صنعتی ...</p>
+                                    <div class="customer_support">
+                                        <div class="support_img_icon">
+                                            <img src="assets/img/icon/hotline.png" alt="آرسس تکنو">
+                                        </div>
+                                        <div class="customer_support_text">
+                                            <p>
+                                                <span>پشتیبان مشتری</span>
+                                                <a href="tel:09301741497" dir="ltr">09301741497</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-7">
+                            <div class="widgets_container widgets_subscribe">
+                                <h3>برای به روزرسانی در خبرنامه مشترک شوید</h3>
+                                <div class="subscribe_form">
+                                    
+    
+                                    <form method="post">
+                                        {% csrf_token %}
+                                            
+                                        
+                                        {{form.as_p}}
+                                        <button type="submit" id="mc-submit">مشترک شدن</button>
+                                        
+                                    </form>
+                                    <!-- mailchimp-alerts Start -->
+                                    <div class="mailchimp-alerts text-centre">
+                                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                                    </div><!-- mailchimp-alerts end -->
+                                </div>
+                                 <p>ما هرگز آدرس ایمیل شما را با شخص ثالث به اشتراک نمی گذاریم.</p>
+                                 <div class="footer_social">
+                                     <ul style="text-align: center;">
+    
+                                         <li><a class="instagram" href="#"><i class="ion-social-instagram"></i></a></li>
+                                     </ul>
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="widgets_container widget_menu">
+                                <h3>اطلاعات</h3>
+                                <div class="footer_menu">
+                                    <ul>
+                                        <li><a href="/factors">تحویل</a></li>
+                                        <li><a href="/about">درباره ما </a></li>
+                                        <li><a href="/contact"> تماس با ما</a></li>
+                                        
+                                    </ul>
+                                    <ul>
+                                        {% comment %} <li><a href="#">اطلاع قانونی</a></li> {% endcomment %}
+                                        <li><a href="/security">پرداخت امن</a></li>
+                                        {% comment %} <li><a href="#">راهنما</a></li> {% endcomment %}
+                                        <li><a href="/my-account"> حساب من </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <div class="footer_bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="copyright_area">
+                                <p>کپی رایت &copy; 1401 <a href="https://yacn.ir">yacn.ir.</a> تمام حقوق محفوظ است.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="footer_payment text-right">
+                                <a href="../"><img src="assets/img/icon/payment.png" alt="آرسس تکنو"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--footer area end-->
+    
+    
+        <!-- modal area start-->
+    
+        <!-- modal area end-->
+    
+    
+    
+    <!-- JS
+    ============================================ -->
+    <!--jquery min js-->
+    <script src="{% static 'assets/js/vendor/jquery-3.4.1.min.js' %}"></script>
+    <!--popper min js-->
+    <script src="{% static 'assets/js/popper.js' %}"></script>
+    <!--bootstrap min js-->
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!--owl carousel min js-->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <!--slick min js-->
+    <script src="{% static 'assets/js/slick.min.js' %}"></script>
+    <!--magnific popup min js-->
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <!--jquery countdown min js-->
+    <script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+    <!--jquery ui min js-->
+    <script src="{% static 'assets/js/jquery.ui.js' %}"></script>
+    <!--jquery elevatezoom min js-->
+    <script src="{% static 'assets/js/jquery.elevatezoom.js' %}"></script>
+    <!--isotope packaged min js-->
+    <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
+    <!--slinky menu js-->
+    <script src="{% static 'assets/js/slinky.menu.js' %}"></script>
+    <!-- Plugins JS -->
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    
+    <!-- Main JS -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    
+    
+    
+    </body>
+    
+    
+    
+    </html>

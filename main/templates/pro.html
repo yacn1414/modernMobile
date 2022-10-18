@@ -1,0 +1,385 @@
+{% extends 'base.html' %}
+{% block title %}
+detail // {{pro.name}}
+{% endblock %}
+{% block content %}
+
+
+{% load custom_tags %}
+{% load static %}
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="/">صفحه اصلی</a></li>
+                            <li><a href="/shop">فروشگاه</a></li>
+                            <li><a href="/c/{{pro.category}}">{{pro.category}}</a></li>
+                            <li>{{pro.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!--product details start-->
+    <div class="product_details product_sidebar mt-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12">
+                    <!--sidebar widget start-->
+                    <aside class="sidebar_widget">
+                        <div class="widget_inner">
+
+                            <div class="widget_list widget_categories">
+                                <h2>دسته بندی ها</h2>
+                                <ul>
+                                    {% for cat in category %}
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="/c/{{cat}}">{{cat}}</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+
+                            <div class="widget_list widget_categories">
+                                <h2>مرتبط</h2>
+                                <ul>
+                                    {% for product in allp %}
+                                    {% if pro.category == product.category %}
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="/pro/{{product.id}}">{{product}}</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="widget_list widget_categories">
+                                <h2>محصولات ویژه</h2>
+                                <ul>
+                                    {% for product in allp %}
+                                    {% if product.vip == "yes" %}
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="/pro/{{product.id}}">{{product}}</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="shop_sidebar_banner">
+                            {% for bann in banner %}
+                            <a href="#"><img src="../ProductImage/{{bann.image1}}" alt=""></a>
+                            {% endfor %}
+                        </div>
+                    </aside>
+                    <!--sidebar widget end-->
+                </div>
+                <div class="col-lg-9 col-md-12">
+                    <div class="product_right_sidebar">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="product-details-tab">
+                                    <div id="img-1" class="zoomWrapper single-zoom">
+                                        <a href="#">
+                                            <img id="zoom1" src="../ProductImage/{{pro.picture}}" data-zoom-image="../ProductImage/{{pro.picture}}" alt="big-1">
+                                        </a>
+                                    </div>
+
+                                    <div class="single-zoom-thumb">
+                                        <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+                                            <li>
+                                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="../ProductImage/{{pro.picture2}}" data-zoom-image="../ProductImage/{{pro.picture2}}">
+                                                    <img src="../ProductImage/{{pro.picture2}}" alt="zo-th-1" />
+                                                </a>
+
+                                            </li>
+                                            <li>
+                                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="../ProductImage/{{pro.picture3}}" data-zoom-image="../ProductImage/{{pro.picture3}}">
+                                                    <img src="../ProductImage/{{pro.picture3}}" alt="zo-th-1" />
+                                                </a>
+
+                                            </li>
+                                            <li>
+                                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="../ProductImage/{{pro.picture4}}" data-zoom-image="../ProductImage/{{pro.picture4}}">
+                                                    <img src="../ProductImage/{{pro.picture4}}" alt="zo-th-1" />
+                                                </a>
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="product_d_right">
+                                    
+                                        <h1>{{pro.name}}</h1>
+                                        <div class="product_nav">
+                                            <ul>
+                                                <li class="prev"><a href="/next/{{pro.id}}"><i class="fa fa-angle-left"></i></a></li>
+                                                
+                                                    <li class="next"><a href="/next/{{pro.id}}"><i class="fa fa-angle-right"></i></a></li>
+                                                
+                                            </ul>
+                                        </div>
+                                        <div class=" product_ratting">
+                                            <ul>
+                                                {% if pro.star == "1" %}
+                                                {% for star in "1" %}
+                                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                {% endfor %}
+                                                {% endif %}
+                                                {% if pro.star == "22" %}
+                                                {% for star in "22" %}
+                                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                {% endfor %}
+                                                {% endif %}
+                                                {% if pro.star == "333" %}
+                                                {% for star in "333" %}
+                                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                {% endfor %}
+                                                {% endif %}
+
+                                                {% if pro.star == "4444" %}
+                                                {% for star in "4444" %}
+                                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                {% endfor %}
+                                                {% endif %}
+
+                                                {% if pro.star == "55555" %}
+                                                {% for star in "55555" %}
+                                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                {% endfor %}
+                                                {% endif %}
+                                            </ul>
+
+                                        </div>
+                                        <div class="price_box">
+                                         <span class="old_price">{% format pro.price %} تومان</span>
+                                            <span class="current_price"> {% takhfif pro.price pro.price_offer id_use pro.id%} تومان </span>
+                                            
+
+                                        </div>
+                                        <div class="product_desc">
+                                            <p>{{pro.caption}} </p>
+                                        </div>
+                                        <div class="product_variant quantity">
+                                            <label>تعداد</label>
+                                            <form action="/sabad/{{pro.id}}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" value="{% takhfif pro.price pro.price_offer id_use pro.id%}" name="hidden">
+                                            <input type="hidden" value="{%format pro.price%}" name="hidden2">
+                                            <input min="1" max="100" name="T" value="1" type="number">
+                                            <button class="button" type="submit">افزودن به سبد</button>
+                                        </form>
+                                        </div>
+                                        <div class=" product_d_action">
+                                            <ul>
+                                                <li><a href="/likes/{{pro.id}}" title="افزودن به علاقه مندیها">+ افزودن به علاقه مندیها</a></li>
+                                                
+                                            </ul>
+                                        </div>
+                                        <div class="product_meta">
+                                            <span>دسته: <a href="/c/{{pro.category}}">{{pro.category}}</a></span>
+                                        </div>
+
+                                    
+                                    <div class="priduct_social">
+                                        <ul>
+                                            
+                                            <li><a class="linkedin" href="#" title="instagram"><i class="fa fa-instagram"></i> instagram</a></li>
+                                            <li><a class="linkedin" href="#" title="telegram"><i class="fa fa-telegram"></i> telegram</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--product info start-->
+                    <div class="product_d_info sidebar">
+                        <div class="product_d_inner ">
+                            <div class="product_info_button">
+                                <ul class="nav" role="tablist">
+                                    <li>
+                                        <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">توضیحات</a>
+                                    </li>
+
+                                    <li>
+                                        <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">نظر ({{comcount}})</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="info" role="tabpanel">
+                                    <div class="product_info_content">
+                                        <p>{{pro.detail}}</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                    <div class="reviews_wrapper">
+                                        
+                                        <div class="reviews_comment_box">
+                                            <div class="comment_thmb">
+                                                <img src="{% static 'assets/img/blog/comment2.jpg' %}" alt="">
+                                            </div>
+                                            
+                                            {% for comment in comments %}
+                                                {% if comment.Product_id == pro.id %}
+                                                  
+                                                
+                                            
+                                                
+                                            <div class="comment_text">
+                                                <div class="reviews_meta">
+
+                                                    <p><strong>{{comment}}</p>
+                                                    <span style="  word-break:break-all;white-space:normal;">{{comment.text}}</span>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        <div class="comment_title">
+                                            <h2>افزودن نظر </h2>
+                                            
+                                        </div>
+                                
+                                        <div class="product_review_form">
+                                            <form action="/com/{{pro.id}}" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label for="review_comment">نظر شما </label>
+                                                        <textarea name="comment" id="review_comment"></textarea>
+                                                    </div>
+  
+                                                </div>
+                                                <button type="submit">ارسال</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--product info end-->
+
+                    <!--product area start-->
+                    <div class="product_area mb-60">
+                        <div class="section_title">
+                            <h2>محصولات مرتبط</h2>
+                        </div>
+                        <div class="product_carousel product_column4 owl-carousel">
+
+{% for pros in allp %}
+
+{% if pros.category == pro.category %}
+    
+
+    
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="/pro/{{pros.id}}"><img src="../ProductImage/{{pros.picture}}" alt=""></a>
+                                    <a class="secondary_img" href="/pro/{{pros.id}}"><img src="../ProductImage/{{pros.picture2}}" alt=""></a>
+                                    <div class="action_links">
+                                        <ul>
+                                            <form action="" method="post">
+                                                <li class="wishlist"><a href="/likes/{{pro.id}}" type="submit" title="افزودن به علاقه مندیها"><i class="icon-heart"></i></a></li>
+                                                </form>
+                                                
+                                        </ul>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <form action="/sabad/{{pro.id}}" method="post">
+                                            {% csrf_token %}
+                                        <button type="submit" title="افزودن به سبد" style="width: auto; background-color: #FDB813;border: none;">افزودن به سبد</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <p class="manufacture_product"><a href="#">{{pros}}</a></p>
+                                    <h4><a href="product-details.html">{{pros.caption}}</a></h4>
+                                    <div class="price_box">
+                                        <span class="old_price">{% format pros.price%} تومان</span>
+                                        <span class="current_price">{% takhfif pros.price pros.price_offer id_use pros.id %} تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+{% endif %}
+{% endfor %}
+                        </div>
+                    </div>
+                    <!--product area end-->
+
+                    <!--product area start-->
+                    <section class="product_area mb-60">
+                        <div class="section_title">
+                            <h2>محصولات پر فروش</h2>
+                        </div>
+                        <div class="product_carousel product_column4 owl-carousel">
+                            
+                            {% for products in buy %}
+                                
+                            
+                            
+                                
+
+                                
+                                
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="../pro/{{products.id}}"><img src="../ProductImage/{{products.picture}}" alt=""></a>
+                                    <a class="secondary_img" href="../pro/{{products.id}}"><img src="../ProductImage/{{products.picture2}}" alt=""></a>
+                                    <div class="label_product">
+                                        <span class="label_sale">{{products.price_offer}}%</span>
+                                    </div>
+
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه مندیها"><i class="icon-heart"></i></a></li>  
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <form action="/sabad/{{pro.id}}" method="post">
+                                            {% csrf_token %}
+                                        <button type="submit" title="افزودن به سبد" style="width: auto; background-color: #FDB813;border: none;">افزودن به سبد</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <p class="manufacture_product"><a href="../pro/{{products.id}}">{{products}}</a></p>
+                                    <h4><a href="../pro/{{products.id}}">{{products.caption}}</a></h4>
+                                    <div class="price_box">
+                                        <span class="old_price">{% format products.price%} تومان</span>
+                                        <span class="current_price">{% takhfif products.price products.price_offer id_use products.id%} تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                    <!--product area end-->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--product details end-->
+    {% endblock content %}

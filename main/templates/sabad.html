@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block title %}
+basket 
+{% endblock %}
+{% block content %}
+{% load custom_tags %}
+
+{% for sab in saba %}
+{% if sab.id_user == id_use %}                       
+{% for all in allp %}
+{% if sab.id_pro == all.id %}
+
+{% jam2 id_use%}
+
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="index.html">صفحه اصلی</a></li>
+                            <li>سبد خرید فروشگاه</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!--shopping cart area start -->
+    <div class="shopping_cart_area mt-32">
+        <div class="container">
+            <form action="#">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <div class="cart_page table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="product_remove">حذف</th>
+                                            <th class="product_thumb">تصویر</th>
+                                            <th class="product_name">محصول</th>
+                                            <th class="product-price">قیمت</th>
+                                            <th class="product_quantity">تعداد</th>
+                                            <th class="product_total">مجموع</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        {% for sab in saba %}
+                                        
+                                        {% if sab.id_user == id_use %}
+                                            
+                                        
+                                                                                    
+                                        {% for all in allp %}
+                                            
+                                        
+                                            
+                                        {% if sab.id_pro == all.id %}
+                                            
+                                        <tr>
+                                            
+                                            <form action="/delete/{{all.id}}" method="post">
+                                                {% csrf_token %}
+                                                
+                                                <td class="product_remove"><button type="submit" style="width:50px; border: none;background-color: white;" ><i class="fa fa-trash-o"></i></button></td>
+                                            </form>
+                                            <td class="product_thumb"><a href="/pro/{{all.id}}"><img src="../ProductImage/{{all.picture}}" alt=""></a></td>
+                                            <td class="product_name"><a href="/pro/{{all.id}}">{{all}}</a></td>
+                                            <td class="product-price">{% takhfif all.price all.price_offer %} تومان</td>
+                                            <td class="product_quantity"><label>تعداد</label> <input min="1" max="100" value="{{sab.T}}" type="number"></td>
+                                            <td class="product_total">{% jam all.price all.price_offer sab.T %} تومان</td>
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="cart_submit">
+                                <button type="submit">آپدیت سبد</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--coupon code area start-->
+                <div class="coupon_area">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="coupon_code right">
+                                <h3>کل سبد خرید</h3>
+                                <div class="coupon_inner">
+                                    <div class="cart_subtotal">
+                                        
+                                        <p class="cart_amount"> 
+                                           <span> مجموع :</span>{%res id_use%}
+                                             تومان</p>
+                                    </div>
+                                    <div class="cart_subtotal ">
+                                        
+                                        <p class="cart_amount"><span>نرخ اصلی:</span> {%nerkhasli id_use%} تومان</p>
+                                    </div>
+                                    {% comment %} <a href="#">حمل و نقل را محاسبه کنید</a> {% endcomment %}
+
+                                    <div class="cart_subtotal">
+                                        <p>مجموع</p>
+                                        <p class="cart_amount"> {%res id_use%} تومان</p>
+                                    </div>
+                                    <div class="checkout_btn">
+                                        <a href="#">بررسی و پرداخت</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--coupon code area end-->
+            </form>
+        </div>
+    </div>
+    <!--shopping cart area end -->
+{% endblock content %}
+    
