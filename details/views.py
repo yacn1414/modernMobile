@@ -38,7 +38,6 @@ def contact(request):
         id_use = 0
         name = None
         allp = None
-    
     return render(request,'contact.html',{ "ino":ino,"sabad":sabadcount,"saba":saba,"id_use":id_use,"name":name,"allp":allp,
 })
 
