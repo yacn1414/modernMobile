@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+{% block title %}search {{search}}{% endblock %}
+{% block content %}
+<br>
+<br>
+<section class="small_product_area mb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_title">
+                    <h2 dir="ltr">your resualt... {{T}}</h2>
+                </div>
+                <div class="product_carousel small_product small_product_column3 owl-carousel">
+                    
+                    
+                    
+                    
+                    
+                    
+                    <div class="product_items">
+                        {% for al in context %}
+                        <div class="single_product">
+                            <div class="product_thumb">
+                                <a class="primary_img" href="pro/{{al.id}}"><img src="ProductImage/{{al.picture}}" alt="مدرن موبایل"></a>
+                            </div>
+                            <div class="product_content">
+                                <p class="manufacture_product"><a href="pro/{{al.id}}">{{al}}</a></p>
+                                <h4><a href="pro/{{al.id}}">{{al.caption}}</a></h4>
+                                <div class="price_box">
+                                    <span class="old_price">{% format al.price%} تومان </span>
+                                    <span class="current_price">{% takhfif al.price al.price_offer id_use al.id %} تومان</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

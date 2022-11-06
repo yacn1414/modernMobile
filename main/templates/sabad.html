@@ -36,7 +36,6 @@ basket
     <!--shopping cart area start -->
     <div class="shopping_cart_area mt-32">
         <div class="container">
-            <form action="#">
                 <div class="row">
                     <div class="col-12">
                         <div class="table_desc">
@@ -77,6 +76,7 @@ basket
                                             <td class="product_thumb"><a href="/pro/{{all.id}}"><img src="../ProductImage/{{all.picture}}" alt=""></a></td>
                                             <td class="product_name"><a href="/pro/{{all.id}}">{{all}}</a></td>
                                             <td class="product-price">{% takhfif all.price all.price_offer %} تومان</td>
+                                            # half
                                             <td class="product_quantity"><label>تعداد</label> <input min="1" max="100" value="{{sab.T}}" type="number"></td>
                                             <td class="product_total">{% jam all.price all.price_offer sab.T %} تومان</td>
                                         </tr>
@@ -126,7 +126,7 @@ basket
                     </div>
                 </div>
                 <!--coupon code area end-->
-            </form>
+    
         </div>
     </div>
     <!--shopping cart area end -->

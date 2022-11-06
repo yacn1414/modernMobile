@@ -10,36 +10,23 @@ from main.models import Image_trend_2,Product,category,sabad,interest
 def factor(request):
     pass
 def about(request):
+    # half
     return render(request,'about.html',{})
     
 def contact(request):
     if request.method == 'POST':
-        if request.is_authenticated:
-            pass
+        if request.user.is_authenticated:
+            messages = request.POST['message']
+            return HttpResponse(messages)
+            # half
             # save comment
 
         else:
-            messages.warning(request, 'motasefane login')
-            return redirect('/contact')
+            messages.warning(request, 'شما لاگین نکردید برای تماس با ما از منو لاگین کنید')
+            return redirect('/')
             # not login
-    if request.is_authenticated:
-        # bug login this if
-        sabadcount = sabad.objects.count()
-        ino = interest.objects.count()
-        saba = sabad.objects.all()
-        id_use = request.user.id
-        name = request.user.username
-        allp = Product.objects.all()
-    else:
-        
-        sabadcount = 0
-        ino = 0
-        saba = None
-        id_use = 0
-        name = None
-        allp = None
-    return render(request,'contact.html',{ "ino":ino,"sabad":sabadcount,"saba":saba,"id_use":id_use,"name":name,"allp":allp,
-})
+    
+    return redirect('/')
 
 def account(request):
     pass

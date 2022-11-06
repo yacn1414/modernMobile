@@ -94,7 +94,7 @@
                             <a href="javascript:void(0)"><i class="icon-x"></i></a>  
                         </div>
                         <div class="welcome_text">
-                            <p>به آرسس تکنو خوش آمدید!</p>
+                            <p>به مدرن موبایل خوش آمدید!</p>
                         </div>
                          <div class="top_right">
                             <ul>
@@ -110,14 +110,14 @@
                             <form action="/search" method="post">
                                 {% csrf_token %}
                                 <div class="search_box">
-                                    <input name="search" placeholder="کل فروشگاه را اینجا جستجو کنید ..." type="text">
+                                    <input name="search_cahr" placeholder="کل فروشگاه را اینجا جستجو کنید ..." type="text">
                                     <button type="submit"><i class="icon-search"></i></button>
                                 </div>
                             </form>
                         </div>
                         <div class="customer_support">
                             <div class="support_img_icon">
-                                <img src="{% static 'assets/img/icon/icon_phone.png' %}" alt="آرسس تکنو">
+                                <img src="{% static 'assets/img/icon/icon_phone.png' %}" alt="مدرن موبایل">
                             </div>
                             <div class="customer_support_text">
                                 <p>
@@ -211,7 +211,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-6">
                         <div class="logo">
-                            <a href="../"><img src="{% static 'assets/img/logo/logo.png' %}" alt="آرسس تکنو"></a>
+                            <a href="../"><img src="{% static 'assets/img/logo/logo.png' %}" alt="مدرن موبایل"></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-6 header_position">
@@ -236,7 +236,7 @@
                             </div>
                             <div class="customer_support">
                                 <div class="support_img_icon">
-                                    <img src="{% static 'assets/img/icon/icon_phone.png' %}" alt="آرسس تکنو">
+                                    <img src="{% static 'assets/img/icon/icon_phone.png' %}" alt="مدرن موبایل">
                                 </div>
                                 <div class="customer_support_text">
                                     <p>
@@ -301,7 +301,7 @@
                                       
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href="/pro/{{pro.id}}"><img src="../ProductImage/{{pro.picture}}" alt="آرسس تکنو"></a>
+                                            <a href="/pro/{{pro.id}}"><img src="../ProductImage/{{pro.picture}}" alt="مدرن موبایل"></a>
                                         </div>
                                         <div class="cart_info">
                                            <a href="/pro/{{pro.id}}">{{pro.name}}</a>
@@ -357,13 +357,13 @@
                         <div class="col-lg-3 col-md-3 col-sm-5">
                             <div class="widgets_container contact_us">
                                 <div class="footer_logo">
-                                    <a href="../"><img src="assets/img/logo/logo.png" alt="آرسس تکنو"></a>
+                                    <a href="../"><img src="assets/img/logo/logo.png" alt="مدرن موبایل"></a>
                                 </div>
                                 <div class="footer_contact">
-                                    <p>فروشگاه آرسس تکنو پیشگام در عرضه لوازم خانگی و صنعتی ...</p>
+                                    <p>فروشگاه مدرن موبایل پیشگام در عرضه لوازم خانگی و صنعتی ...</p>
                                     <div class="customer_support">
                                         <div class="support_img_icon">
-                                            <img src="assets/img/icon/hotline.png" alt="آرسس تکنو">
+                                            <img src="assets/img/icon/hotline.png" alt="مدرن موبایل">
                                         </div>
                                         <div class="customer_support_text">
                                             <p>
@@ -395,8 +395,24 @@
                                         <div class="mailchimp-success"></div><!-- mailchimp-success end -->
                                         <div class="mailchimp-error"></div><!-- mailchimp-error end -->
                                     </div><!-- mailchimp-alerts end -->
-                                </div>
+                                    
                                  <p>ما هرگز آدرس ایمیل شما را با شخص ثالث به اشتراک نمی گذاریم.</p>
+                                 <br>
+                                    <br>
+                                    <form method="post" action="/contact" style="text-align: center;">
+                                        {% csrf_token %}
+                                  
+                                      
+                                          <div class="form-group" style="text-align: center;">
+                                            
+                                            
+                                            <textarea name="message" class="form-control" id="exampleInputPassword1" placeholder="پیام خودتو تایپ کن(تماس با ما)" style="width: auto;" rows="7"></textarea>
+                                          </div>
+                                          
+                                          <button type="submit" style="background-color: lightblue;">ارسال پیام</button>
+                                        </form>
+                                </div>
+
                                  <div class="footer_social">
                                      <ul style="text-align: center;">
     
@@ -437,7 +453,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="footer_payment text-right">
-                                <a href="../"><img src="assets/img/icon/payment.png" alt="آرسس تکنو"></a>
+                                <a href="../"><img src="assets/img/icon/payment.png" alt="مدرن موبایل"></a>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from . import models
 from .forms import Emailc
 # Create your views here.
@@ -57,7 +57,30 @@ def main(request):
 
 def search(request):
     if request.method == "POST":
-        print("ok")
+        search = request.POST['search_cahr']
+        context = models.Product.objects.filter(name__contains=search)
+        T = len(context)
+    else:
+        context = None
+        search = ''
+        T = 0
+    if request.user.is_authenticated:
+        sabadcount = models.sabad.objects.count()
+        ino = models.interest.objects.count()
+        saba = models.sabad.objects.all()
+        id_use = request.user.id
+        name = request.user.username
+        allp = models.Product.objects.all()
+    else:
+        sabadcount = 0
+        ino = 0
+        saba = None
+        id_use = 0
+        name = None
+        allp = None
+    return render(request, 'opiran.html',{"context":context,"search":search,'T':T,
+    "ino":ino,"sabad":sabadcount,"saba":saba,"id_use":id_use,"name":name,"allp":allp,
+    })
 
 def sabadolikes(request):
     models.sabad.objects.all()
