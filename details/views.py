@@ -22,7 +22,7 @@ def contact(request):
             # save comment
 
         else:
-            messages.warning(request, 'شما لاگین نکردید برای تماس با ما از منو لاگین کنید')
+            messages.warning(request, '.شما لاگین نکردید برای تماس با ما از منو لاگین کنید')
             return redirect('/')
             # not login
     
