@@ -1,7 +1,8 @@
+
 from django.contrib import messages
 from django.shortcuts import render,redirect,HttpResponse
 from . import models
-from .forms import Emailc
+from .forms import Emailc,contactForm
 # Create your views here.
 
 def main(request):
@@ -33,18 +34,42 @@ def main(request):
             Offrs += models.Product.objects.filter(name= e)
     if request.method == "POST":
         form = Emailc(request.POST)
+        form1 = contactForm(request.POST)
         if form.is_valid():
             email=models.Email()
             email.Email = form.cleaned_data['Email']
-            if models.Email.objects.filter(Email=email.Email).exists():
-                messages.warning(request,"فرمت ایمیل درست نیست یا قبلا ثبت شده")
+            # bug / big bug
+            contact_var=models.contact()
+            contact_var.textmessage = form.cleaned_data['message']
+            contact_var.username = request.user.username
+            if email.Email != '':
+                if models.Email.objects.filter(Email=email.Email).exists():
+                    messages.warning(request,"فرمت ایمیل درست نیست یا قبلا ثبت شده")
+                else:
+                    email.save()
+                    messages.success(request,"شما عضو خبرنامه شدی")
             else:
-                email.save()
-                messages.success(request,"شما عضو خبرنامه شدی")
+                if contact_var.textmessage != '':
+                    if request.user.is_authenticated:
+                        contact_var.save()
+                        messages.success(request,"پیام شما در سیستم ثبت شد پس از پاسخ داده شدن به پیام شما در پروفایل کاربری نمایش داده میشود")
+                    else:
+                        messages.warning(request,".شما لاگین نکردید برای تماس با ما از منو لاگین کنید")
+                        redirect('/')
 
     else:
         form = Emailc()
+        form = contactForm()
+
+
+    if request.method == "GET":
+        form = contactForm(request.GET)
+        if form.is_valid():
+            pass
+
     
+
+
     return render(request,
     "index.html",
     {"name":name,"data_banner":banner2,"id_use":id_use,"ofpr":Offrs,

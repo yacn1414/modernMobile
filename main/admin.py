@@ -12,6 +12,6 @@ admin.site.register(models.Email)
 admin.site.register(models.Brand)
 admin.site.register(models.sabad)
 admin.site.register(models.interest)
-
+admin.site.register(models.contact)
 admin.site.register(models.jamsabad)
 

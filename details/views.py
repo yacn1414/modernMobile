@@ -1,10 +1,11 @@
 
+
 from django.shortcuts import render
 from django.http import HttpResponseNotFound,HttpResponse
 from django.contrib import messages
 from django.shortcuts import render,redirect
 from . import models
-from main.models import Image_trend_2,Product,category,sabad,interest
+from main.models import Image_trend_2,Product,category,sabad,interest,contact
 
 # Create your views here.
 def factor(request):
@@ -13,20 +14,26 @@ def about(request):
     # half
     return render(request,'about.html',{})
     
-def contact(request):
-    if request.method == 'POST':
-        if request.user.is_authenticated:
-            messages = request.POST['message']
-            return HttpResponse(messages)
-            # half
-            # save comment
+# def contact(request):
 
-        else:
-            messages.warning(request, '.شما لاگین نکردید برای تماس با ما از منو لاگین کنید')
-            return redirect('/')
-            # not login
+
+
+#     # if request.method == 'POST':
+#     #     if request.user.is_authenticated:
+#     #         messages = request.POST['message']
+#     #         user = request.user.username
+#     #         data = contact.objects.create(username=user,textmessage=messages)
+#     #         if data:
+#     #             messages.success(request,"پیام شما در سیستم ثبت شد پس از پاسخ داده شدن به پیام شما در پروفایل کاربری نمایش داده میشود")
+#     #         # half
+#     #         # save comment
+
+#     #     else:
+#     #         messages.warning(request, '.شما لاگین نکردید برای تماس با ما از منو لاگین کنید')
+#     #         return redirect('/')
+#     #         # not login
     
-    return redirect('/')
+#     return redirect('/')
 
 def account(request):
     pass

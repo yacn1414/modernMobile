@@ -34,7 +34,7 @@ class Product(models.Model):
     picture3 = models.ImageField(_("عکس جزيیات"),upload_to='ProductImage/picture3')
     picture4 = models.ImageField(_("عکس جزییات"),upload_to='ProductImage/picture4')
     vip = models.CharField(_("محصول ویژه"),max_length=20,default="no",choices=[("no","خیر"),("yes","بله")])
-    price_offer = models.ForeignKey(Offer,on_delete = models.CASCADE,blank=True,null=True)
+    price_offer = models.ForeignKey(Offer,on_delete = models.CASCADE,blank=True,null=True,default=0)
     category = models.ForeignKey("category",on_delete=models.CASCADE)
     star = models.CharField(_("امتیاز به ستاره"),max_length=25,choices=NUMBERS)
     caption = models.TextField(_("معرفی جزیَی"),)
@@ -140,6 +140,16 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.name
+class contact(models.Model):
+    username = models.CharField(max_length=30)
+    textmessage = models.TextField()
+    response = models.TextField(null=True,blank=True)
+    class Meta:
+        verbose_name = _("contact")
+        verbose_name_plural = _("contact")
+
+    def __str__(self):
+        return self.username
 from django.dispatch import receiver
 from django.db.models.signals import post_save,post_delete
 @receiver(post_save,sender=Product)
