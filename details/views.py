@@ -14,29 +14,7 @@ def about(request):
     # half
     return render(request,'about.html',{})
     
-# def contact(request):
 
-
-
-#     # if request.method == 'POST':
-#     #     if request.user.is_authenticated:
-#     #         messages = request.POST['message']
-#     #         user = request.user.username
-#     #         data = contact.objects.create(username=user,textmessage=messages)
-#     #         if data:
-#     #             messages.success(request,"پیام شما در سیستم ثبت شد پس از پاسخ داده شدن به پیام شما در پروفایل کاربری نمایش داده میشود")
-#     #         # half
-#     #         # save comment
-
-#     #     else:
-#     #         messages.warning(request, '.شما لاگین نکردید برای تماس با ما از منو لاگین کنید')
-#     #         return redirect('/')
-#     #         # not login
-    
-#     return redirect('/')
-
-def account(request):
-    pass
 def security(request):
     pass
 def categoryview(request,parametr):

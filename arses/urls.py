@@ -4,9 +4,9 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 from django.urls import path,include
-admin.site.site_header = "admin panel"
-admin.site.site_title="yacn"
-admin.site.index_title="اینا امکانات استفاده کن (در ضمن این سایت شدیدا در حال توسعه میباشد)"
+admin.site.site_header = "Mobile modern"
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('main.urls')),

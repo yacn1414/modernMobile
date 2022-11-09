@@ -348,7 +348,7 @@
 {% block content %}
     
 {% endblock content %}
-    
+    <hr>
         <!--footer area start-->
         <footer class="footer_widgets">
             <div class="footer_top">
@@ -377,18 +377,10 @@
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-7">
                             <div class="widgets_container widgets_subscribe">
-                                <h3>برای به روزرسانی در خبرنامه مشترک شوید</h3>
+                                <h3>نظرات و پیشنهادات خود را با ما در میان بگذارید ...</h3>
                                 <div class="subscribe_form">
                                     
     
-                                    <form method="post">
-                                        {% csrf_token %}
-                                            
-                                        
-                                        {{form.as_p}}
-                                        <button type="submit" id="mc-submit">مشترک شدن</button>
-                                        
-                                    </form>
                                     <!-- mailchimp-alerts Start -->
                                     <div class="mailchimp-alerts text-centre">
                                         <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
@@ -396,7 +388,7 @@
                                         <div class="mailchimp-error"></div><!-- mailchimp-error end -->
                                     </div><!-- mailchimp-alerts end -->
                                     
-                                 <p>ما هرگز آدرس ایمیل شما را با شخص ثالث به اشتراک نمی گذاریم.</p>
+                                 
                                  <br>
                                     <br>
                                     <form method="post" style="text-align: center;">
