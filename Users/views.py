@@ -16,10 +16,11 @@ def authlogin(request):
             if user.is_active:
                 request.session.set_expiry(86400)
                 login(request, user)
-                return HttpResponse("ok")
+                return redirect('/account')
             else:
-                return HttpResponse("no")
-    return HttpResponse(request.user.username)
+                messages.ERROR(request,'مشکلی در ثبت نام وجود دارد')
+                return redirect('/login')
+    return redirect('/login')
     # half login
 def auth(request):
     if request.method == "POST":
@@ -33,5 +34,5 @@ def auth(request):
         return redirect("../signup")
 def signup(request):
     return render(request,'user.html',{})
-def loginuser(request):
-    return render(request,'login.html',{})
+def loginUser(request):
+    return render(request,'registration/login.html',{})

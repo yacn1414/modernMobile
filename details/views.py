@@ -1,20 +1,28 @@
 
 
 from django.shortcuts import render
-from django.http import HttpResponseNotFound,HttpResponse
+from django.http import HttpResponseNotFound,JsonResponse
 from django.contrib import messages
 from django.shortcuts import render,redirect
 from . import models
+from Users.models import UserCustom
 from main.models import Image_trend_2,Product,category,sabad,interest,contact
 
 # Create your views here.
-def factor(request):
-    pass
+def edit(request):
+    a = {
+        "name" : request.POST['fullname'],
+        "email" : request.POST['email'],
+        
+        "state" : request.POST['state'],
+    }
+    return JsonResponse(a)
 def about(request):
     # half
     return render(request,'about.html',{})
     
-
+def editaccount(request):
+    return render(request, 'edit.html')
 def security(request):
     pass
 def categoryview(request,parametr):
@@ -77,3 +85,13 @@ def delete(request,id):
     else:
         messages.info(request,"شما هنوز عضو سایت نشدید")
         redirect("../")
+def account(request):
+    if request.user.is_authenticated:
+        id_use = request.user.username
+        staff = request.user.is_superuser
+        fullname = request.user.get_full_name
+        phone = UserCustom.objects.get(user__username=id_use)
+    else:
+        id_use = None
+        return redirect('login')
+    return render(request, 'account.html',{"name":id_use,"staff":staff,"fullName":fullname,"phone":phone})

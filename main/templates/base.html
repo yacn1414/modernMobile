@@ -146,10 +146,14 @@
                   
                                     <li><a class="active" href="/">صفحه اصلی<i class="fa"></i></a>
                                     </li>
-                                    <li><a href="#">{{name}}</a></li>
+                                    <li><a href="/account">{{name}}</a></li>
                                     <li><a href="/about">درباره ما </a> </li>
+                                    {% if id_use %}
+                                    <li><a href="/account">{{name}}</a></li>  
+                                    {% else %}
                                     <li><a href="/login">ورود</a> </li>
                                     <li><a href="/signup">ثبت نام</a> </li>
+                                    {% endif %}</li>
                                     <li><a href="#contact"> تماس با ما</a></li>
                        
                             </ul>
@@ -189,8 +193,8 @@
                                     
                                     <li class="top_links"><a href="#">تنظیم <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                         <ul class="dropdown_links">
-                                            <li><a href="#">{{name}}</a></li>
-                                            <li><a href="/my-account">حساب من </a> </li>
+                                            <li><a href="/account">{{name}}</a></li>
+                                            <li><a href="/account">حساب من </a> </li>
                                             <li><a href="/sabad">سبد خرید </a></li>
                                             <li><a href="/likes">لیست دلخواه </a> </li>
                                         </ul>
@@ -225,7 +229,7 @@
                                         <li><a href="/about">درباره ما </a> </li>
                                         <li><a href="#contact"> تماس با ما</a></li>
                                         {% if id_use %}
-                                        <li><a href="">{{name}}</a></li>  
+                                        <li><a href="/account">{{name}}</a></li>  
                                         {% else %}
                                         <li><a href="/login">ورود</a> </li>
                                         <li><a href="/signup">ثبت نام</a> </li>
